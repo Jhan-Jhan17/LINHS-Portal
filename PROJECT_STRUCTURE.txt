@@ -1,0 +1,359 @@
+================================================================================
+             LUMBANG INTEGRATED NATIONAL HIGH SCHOOL PORTAL
+                       PROJECT STRUCTURE OVERVIEW
+================================================================================
+
+LINHS-PORTAL/
+│
+├── 📄 CORE APPLICATION FILES
+│   ├── app.py                          # Main Flask application (400+ lines)
+│   ├── run.py                          # Startup script with welcome message
+│   ├── requirements.txt                # Python dependencies (Flask, Flask-Login)
+│   └── .gitignore                      # Git ignore rules
+│
+├── 📖 DOCUMENTATION FILES
+│   ├── START_HERE.txt                  # ⭐ First time? Read this!
+│   ├── README.md                       # Complete project documentation
+│   ├── DOCUMENTATION_INDEX.md          # Guide to all documentation
+│   ├── SETUP_CHECKLIST.md             # Pre-deployment checklist
+│   ├── DEPLOYMENT_GUIDE.md            # How to deploy to production
+│   ├── CONVERSION_SUMMARY.md          # React to Flask conversion details
+│   ├── QUICK_REFERENCE.md             # Quick commands and snippets
+│   ├── DATABASE_MIGRATION_GUIDE.md    # Migrate from JSON to database
+│   └── PROJECT_STRUCTURE.txt          # This file
+│
+├── 📁 templates/ (HTML TEMPLATES - JINJA2)
+│   │
+│   ├── base.html                       # Base template with nav & footer
+│   │   ├── Navigation bar
+│   │   ├── Flash messages
+│   │   ├── Content block (inherited by all pages)
+│   │   └── Footer
+│   │
+│   ├── PUBLIC PAGES (No login required)
+│   │   ├── home.html                  # Homepage with hero, stats, announcements
+│   │   ├── school_info.html           # Vision, mission, contact info
+│   │   ├── strands.html               # ICT, STEM, HUMSS information
+│   │   ├── classes.html               # Class listings
+│   │   ├── announcements.html         # All announcements
+│   │   ├── resources.html             # Learning resources
+│   │   └── gallery.html               # Photo gallery
+│   │
+│   └── TEACHER/ADMIN PAGES (Login required)
+│       ├── teacher_login.html         # Login page with demo credentials
+│       └── teacher_dashboard.html     # Full dashboard with tabs:
+│           ├── Students management
+│           ├── Classes management
+│           ├── Announcements
+│           ├── Attendance (placeholder)
+│           ├── Grades (placeholder)
+│           └── Schedule (placeholder)
+│
+├── 📁 static/ (STATIC FILES - CSS, IMAGES)
+│   │
+│   ├── css/ (STYLESHEETS - Preserved from React)
+│   │   ├── index.css                  # Main styles, dark background
+│   │   ├── theme.css                  # Theme variables, glassmorphism
+│   │   ├── tailwind.css               # Tailwind CSS configuration
+│   │   └── fonts.css                  # Google Fonts (Inter)
+│   │
+│   └── images/
+│       └── logo.png                   # School logo (REPLACE THIS!)
+│
+├── 📁 data/ (DATA STORAGE - Created automatically)
+│   │
+│   │   ⚠️ This folder is created when you first run the app
+│   │   ⚠️ All your data is stored here in JSON format
+│   │   ⚠️ Backup this folder regularly!
+│   │
+│   ├── school_info.json               # School information
+│   │   └── {name, motto, vision, mission, address, email, phone}
+│   │
+│   ├── strands.json                   # Academic strands (ICT, STEM, HUMSS)
+│   │   └── [{id, name, description, subjects, careerPaths}]
+│   │
+│   ├── students.json                  # Student records
+│   │   └── [{id, name, gradeLevel, section, strand, classId}]
+│   │
+│   ├── classes.json                   # Class information
+│   │   └── [{id, name, gradeLevel, strand, teacher, schedule}]
+│   │
+│   ├── announcements.json             # School announcements
+│   │   └── [{id, title, content, date, priority}]
+│   │
+│   ├── resources.json                 # Learning resources
+│   │   └── [{id, name, description, category, url}]
+│   │
+│   └── gallery.json                   # Gallery images
+│       └── [{id, title, description, imageUrl, category, date}]
+│
+└── 📁 Additional Files (Development only)
+    ├── .flaskenv                      # Flask environment variables
+    ├── .gitignore                     # Git ignore patterns
+    └── (Virtual environment)          # venv/ or env/ (not committed)
+
+================================================================================
+                              FILE PURPOSES
+================================================================================
+
+🎯 ESSENTIAL FILES (Can't run without these)
+├── app.py                  - The brain of the application
+├── requirements.txt        - Tells Python what to install
+├── templates/*.html        - The pages users see
+└── static/css/*.css        - Makes everything look good
+
+📚 DOCUMENTATION (Helps you use the app)
+├── START_HERE.txt          - Begin here if you're new
+├── README.md               - Everything you need to know
+└── *.md files              - Specific guides for different tasks
+
+🗄️ DATA FILES (Created automatically)
+└── data/*.json             - Your actual school data
+
+================================================================================
+                              WORKFLOW DIAGRAM
+================================================================================
+
+USER REQUEST
+    │
+    ├── Public Page (/)
+    │   ├── app.py receives request
+    │   ├── Loads data from data/*.json
+    │   ├── Renders template from templates/*.html
+    │   └── Returns HTML with static/css/*.css
+    │
+    └── Teacher Portal (/teacher/*)
+        ├── User visits /teacher/login
+        ├── Submits credentials
+        ├── app.py validates with Flask-Login
+        ├── Creates session
+        ├── Redirects to /teacher/dashboard
+        └── User can CRUD data in data/*.json
+
+================================================================================
+                           TECHNOLOGY STACK
+================================================================================
+
+Backend:
+├── Python 3.8+
+├── Flask 3.0.0              (Web framework)
+└── Flask-Login 0.6.3        (Authentication)
+
+Frontend:
+├── Jinja2                   (Template engine)
+├── Tailwind CSS v4          (Styling framework)
+├── Lucide Icons             (Icon library - CDN)
+└── Custom CSS               (Glassmorphism theme)
+
+Data Storage:
+└── JSON files               (Can migrate to database later)
+
+Authentication:
+├── Flask-Login              (Session management)
+└── Werkzeug                 (Password hashing)
+
+================================================================================
+                           SIZE REFERENCE
+================================================================================
+
+Lines of Code:
+├── app.py                   ~450 lines
+├── base.html                ~200 lines
+├── teacher_dashboard.html   ~350 lines
+├── Other templates          ~100 lines each
+└── Total                    ~2,500 lines (all files)
+
+File Sizes:
+├── app.py                   ~20 KB
+├── All templates            ~40 KB
+├── All CSS                  ~15 KB
+├── Documentation            ~150 KB
+└── Total                    ~230 KB (excluding venv)
+
+================================================================================
+                        REQUEST FLOW EXAMPLES
+================================================================================
+
+EXAMPLE 1: Homepage Visit
+User → Browser → http://localhost:5000/
+                 ↓
+            Flask Router (app.py)
+                 ↓
+            home() function
+                 ↓
+            load_data('school_info.json')
+            load_data('students.json')
+            load_data('announcements.json')
+                 ↓
+            Calculate statistics
+                 ↓
+            render_template('home.html', ...)
+                 ↓
+            Browser ← HTML with CSS
+
+EXAMPLE 2: Teacher Login
+User → Browser → http://localhost:5000/teacher/login
+                 ↓
+            POST credentials
+                 ↓
+            teacher_login() function
+                 ↓
+            Check USERS dictionary
+                 ↓
+            check_password_hash()
+                 ↓
+            login_user() - Create session
+                 ↓
+            redirect('/teacher/dashboard')
+                 ↓
+            Browser ← Dashboard page
+
+EXAMPLE 3: Add Student (API)
+Teacher → Dashboard → Click "Add Student"
+                      ↓
+                   Fill form
+                      ↓
+                   POST to /api/students
+                      ↓
+                   Flask receives JSON
+                      ↓
+                   Check @login_required
+                      ↓
+                   load_data('students.json')
+                      ↓
+                   Add new student
+                      ↓
+                   save_data('students.json', ...)
+                      ↓
+                   Return success JSON
+                      ↓
+                   JavaScript reloads page
+                      ↓
+         Teacher ← Updated student list
+
+================================================================================
+                        DEVELOPMENT WORKFLOW
+================================================================================
+
+1. SETUP
+   ├── Install Python
+   ├── pip install -r requirements.txt
+   └── Add logo to static/images/logo.png
+
+2. DEVELOPMENT
+   ├── Run: python run.py
+   ├── Edit files
+   ├── Refresh browser (no rebuild needed!)
+   └── Check terminal for errors
+
+3. TESTING
+   ├── Test all public pages
+   ├── Test teacher login
+   ├── Test admin login
+   ├── Test CRUD operations
+   └── Test on mobile
+
+4. DEPLOYMENT
+   ├── Complete SETUP_CHECKLIST.md
+   ├── Read DEPLOYMENT_GUIDE.md
+   ├── Choose platform
+   ├── Deploy
+   └── Verify everything works
+
+================================================================================
+                          CUSTOMIZATION POINTS
+================================================================================
+
+Easy to Change:
+├── Logo                     → static/images/logo.png
+├── Colors                   → static/css/theme.css (CSS variables)
+├── School info              → Login as admin, edit in dashboard
+├── Default data             → Edit init_data() in app.py
+└── User credentials         → USERS dictionary in app.py
+
+Medium Difficulty:
+├── Add new page             → Create template + route in app.py
+├── Add new field            → Update data structure + templates
+├── Change styling           → Edit CSS files
+└── Add navigation link      → Edit base.html
+
+Advanced:
+├── Migrate to database      → See DATABASE_MIGRATION_GUIDE.md
+├── Add new features         → Modify app.py + templates
+├── Add file uploads         → Install Flask-Upload
+└── Add email notifications  → Install Flask-Mail
+
+================================================================================
+                           BACKUP STRATEGY
+================================================================================
+
+CRITICAL FILES (Must backup):
+├── data/                    ← ALL YOUR DATA IS HERE!
+├── static/images/logo.png   ← Your custom logo
+└── app.py                   ← If you customized it
+
+BACKUP COMMAND:
+tar -czf backup_$(date +%Y%m%d).tar.gz data/ static/images/ app.py
+
+RESTORE:
+tar -xzf backup_20260216.tar.gz
+
+================================================================================
+                          SECURITY NOTES
+================================================================================
+
+⚠️ BEFORE PRODUCTION:
+├── Change app.secret_key in app.py
+├── Change default passwords (teacher123, admin123)
+├── Set debug=False
+├── Use HTTPS (SSL certificate)
+└── Review security checklist in DEPLOYMENT_GUIDE.md
+
+🔒 SECURE BY DEFAULT:
+├── Passwords are hashed (Werkzeug)
+├── Session cookies are HTTP-only
+├── Login required for admin features
+├── Role-based access control (teacher/admin)
+└── No signup (reduces attack surface)
+
+================================================================================
+                        GETTING HELP
+================================================================================
+
+1. READ DOCUMENTATION
+   └── Check DOCUMENTATION_INDEX.md for guide
+
+2. TROUBLESHOOTING
+   ├── START_HERE.txt → Troubleshooting section
+   ├── QUICK_REFERENCE.md → Debug commands
+   └── Each .md file → Troubleshooting section
+
+3. ONLINE RESOURCES
+   ├── Flask Docs: https://flask.palletsprojects.com/
+   ├── Jinja2 Docs: https://jinja.palletsprojects.com/
+   └── Stack Overflow: Search your error
+
+================================================================================
+
+📌 KEY POINTS TO REMEMBER:
+
+✅ All data is in data/ folder - BACKUP IT!
+✅ CSS files are preserved from React version
+✅ No build step needed - just edit and refresh
+✅ Login credentials are in app.py USERS dictionary
+✅ Templates use Jinja2 syntax, not React JSX
+✅ Each route in app.py corresponds to a page
+✅ Static files served from static/ folder
+✅ Default port is 5000 (can be changed in app.py)
+
+================================================================================
+
+🎓 YOU'RE READY TO GO!
+
+Next steps:
+1. Read START_HERE.txt
+2. Run python run.py
+3. Open http://localhost:5000
+4. Explore and enjoy!
+
+================================================================================
