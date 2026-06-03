@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ict",
+    "name": "ICT",
+    "fullName": "Information and Communications Technology",
+    "description": "Prepares students for careers in technology and computer science.",
+    "color": "blue",
+    "icon": "TrendingUp",
+    "subjects": {
+      "grade11": [
+        "Computer Programming",
+        "Web Development",
+        "Database Management",
+        "Computer Systems Servicing"
+      ],
+      "grade12": [
+        "Advanced Programming",
+        "Network Administration",
+        "Multimedia Arts",
+        "ICT Project Management"
+      ]
+    },
+    "careerPaths": [
+      "Software Developer",
+      "Web Developer",
+      "Network Administrator",
+      "Database Administrator",
+      "IT Support Specialist"
+    ]
+  },
+  {
+    "id": "stem",
+    "name": "STEM",
+    "fullName": "Science, Technology, Engineering, and Mathematics",
+    "description": "Focuses on developing scientific and mathematical skills.",
+    "color": "green",
+    "icon": "GraduationCap",
+    "subjects": {
+      "grade11": [
+        "General Biology",
+        "General Physics",
+        "General Chemistry",
+        "Pre-Calculus"
+      ],
+      "grade12": [
+        "Advanced Biology",
+        "Advanced Physics",
+        "Advanced Chemistry",
+        "Calculus",
+        "Research"
+      ]
+    },
+    "careerPaths": [
+      "Engineer",
+      "Scientist",
+      "Medical Doctor",
+      "Researcher",
+      "Mathematician",
+      "Architect"
+    ]
+  },
+  {
+    "id": "humss",
+    "name": "HUMSS",
+    "fullName": "Humanities and Social Sciences",
+    "description": "Develops understanding of human behavior and society.",
+    "color": "purple",
+    "icon": "BookOpen",
+    "subjects": {
+      "grade11": [
+        "Philippine History",
+        "World Religions",
+        "Creative Writing",
+        "Introduction to Philosophy"
+      ],
+      "grade12": [
+        "Community Engagement",
+        "Creative Nonfiction",
+        "Trends & Issues",
+        "Social Science Research"
+      ]
+    },
+    "careerPaths": [
+      "Lawyer",
+      "Social Worker",
+      "Journalist",
+      "Psychologist",
+      "Teacher",
+      "Diplomat"
+    ]
+  }
+]
